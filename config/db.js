@@ -12,13 +12,13 @@ async function connectDB() {
     }
     if (!cached.promise) {
         const opts ={
-            bufferComands: false
+             bufferCommands: false,
         }
         cached.promise = mongoose.connect(`${process.env.MONGODB_URI}/filofoam`,opts).then(mongoose => {
             return mongoose
         })
     }
-    cached.com = await cached.promise
+    cached.conn = await cached.promise
     return cached.conn
 }
 
