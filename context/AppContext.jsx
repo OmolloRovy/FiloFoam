@@ -28,6 +28,9 @@ const { user } = useUser();
     }
 
     const fetchUserData = async () => {
+        if(user.publicMetadata.role === 'seller'){
+            setIsSeller(true)
+        }
         setUserData(userDummyData)
     }
 
