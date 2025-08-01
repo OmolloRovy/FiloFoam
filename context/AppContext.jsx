@@ -2,7 +2,7 @@
 import { productsDummyData, userDummyData } from "@/assets/assets";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useUser } from '@clerk/nextjs';
+import { useUser,useAuth } from '@clerk/nextjs';
 
 
 export const AppContext = createContext();
@@ -17,6 +17,7 @@ export const AppContextProvider = (props) => {
     const router = useRouter()
 
 const { user } = useUser();
+const { getToken } = useAuth();
 
     const [products, setProducts] = useState([])
     const [userData, setUserData] = useState(false)
@@ -93,7 +94,7 @@ const { user } = useUser();
     }, [user])
 
     const value = {
-        user,
+        user, getToken,
         currency, router,
         isSeller, setIsSeller,
         userData, fetchUserData,
