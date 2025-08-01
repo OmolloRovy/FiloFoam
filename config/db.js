@@ -1,4 +1,4 @@
-// config/db.js
+
 import mongoose from "mongoose";
 
 let cached = global.mongoose;
@@ -13,14 +13,11 @@ async function connectDB() {
   }
 
   if (!cached.promise) {
-    const dbName = "filofoam"; 
-    const connectionString = `${process.env.MONGODB_URI}/${dbName}`;
-
     const opts = {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(connectionString, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(`${process.env.MONGODB_URI}/filofoam`, opts).then(mongoose => {
       return mongoose;
     });
   }
