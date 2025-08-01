@@ -1,7 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "./db";
-import User from "../../models/User";
-
+import User from "@/models/User";
+//inngest module not found solution
 
 
 // Create a client to send and receive events
