@@ -28,10 +28,12 @@ const { user } = useUser();
     }
 
     const fetchUserData = async () => {
-        if(user.publicMetadata.role === 'seller'){
+       try {
+            if(user.publicMetadata.role === 'seller'){
             setIsSeller(true)
         }
         setUserData(userDummyData)
+    }catch (error){}
     }
 
     const addToCart = async (itemId) => {
@@ -85,8 +87,10 @@ const { user } = useUser();
     }, [])
 
     useEffect(() => {
+        if (user){
         fetchUserData()
-    }, [])
+        }
+    }, [user])
 
     const value = {
         user,
